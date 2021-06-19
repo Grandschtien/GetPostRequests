@@ -15,6 +15,7 @@ enum Actions: String, CaseIterable {
     case ourCourses = "Our Courses"
     case uploadImage = "Upload Image"
     case donloadFile = "Download File"
+    case ourCoursesAlamofir = "Our Courses (Alamofire)"
 }
 
 private let reuseIdentifier = "Cell"
@@ -112,8 +113,25 @@ class MainViewController: UICollectionViewController {
         case .donloadFile:
             showAlert()
             dataProvider.startDownload()
+        case .ourCoursesAlamofir:
+            performSegue(withIdentifier: "OurCoursesWithAlamofire", sender: self)
         }
         
+    }
+    
+    //MARK:- Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let coursesVC = segue.destination as? CoursesViewController else { return }
+        
+        switch segue.identifier {
+        case "OurCourses":
+            coursesVC.fetchData()
+        case "OurCoursesWithAlamofire":
+            coursesVC.fetchDataWithAlamofire()
+        default:
+            break
+        }
     }
     
 }

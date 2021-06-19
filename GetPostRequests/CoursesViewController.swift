@@ -19,16 +19,18 @@ class CoursesViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        fetchData()
     }
     
-    private  func fetchData() {
+    func fetchData() {
         NetworkManager.fetchData(url: url) {[weak self] courses in
             self?.courses = courses
             self?.tableView.reloadData()
         }
     }
     
+    func fetchDataWithAlamofire() {
+        AlamofireNetworkRequest.sendRequest(url: url)
+    }
     private func configureCell(cell: TableViewCell, for indexPath: IndexPath) {
         let course = courses[indexPath.row]
         cell.courseNameLabel.text = course.name
@@ -37,7 +39,7 @@ class CoursesViewController: UIViewController {
             cell.numberOfLessons.text = "Number of lessons: \(numberOfLessons)"
             
         }
-        if let numberOfTests = course.numberOftests {
+        if let numberOfTests = course.numberOfTests {
             cell.numberOfTests.text = "Number of tests: \(numberOfTests)"
         }
         DispatchQueue.global().async {
