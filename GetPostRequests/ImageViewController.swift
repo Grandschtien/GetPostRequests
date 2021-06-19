@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Alamofire
 class ImageViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -14,20 +14,27 @@ class ImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.isHidden = true
-        
-        fetchImage()
-        // Do any additional setup after loading the view.
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
     }
     // Пример загрузки картинки
     func fetchImage() {
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
         NetworkManager.dowloadImage(url: url) {[weak self] image in
                 self?.activityIndicator.stopAnimating()
                 self?.imageView.image = image
                 self?.imageView.contentMode = .scaleAspectFill
         }
     }
-
+    func fetchDataWithAlamofire() {
+        AF.request(url).responseData { [weak self] (responseData) in
+            switch responseData.result {
+            case .success(let data):
+                guard let image = UIImage(data: data) else { return }
+                self?.activityIndicator.stopAnimating()
+                self?.imageView.image = image
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

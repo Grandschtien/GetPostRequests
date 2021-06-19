@@ -16,11 +16,14 @@ enum Actions: String, CaseIterable {
     case uploadImage = "Upload Image"
     case donloadFile = "Download File"
     case ourCoursesAlamofir = "Our Courses (Alamofire)"
+    case responseData = "responsData"
+    case responseString = "responseString"
+    case response = "response"
 }
 
 private let reuseIdentifier = "Cell"
 private let url = "https://jsonplaceholder.typicode.com/posts"
-
+private let swiftbookApi = "https://swiftbook.ru//wp-content/uploads/api/api_courses"
 
 
 class MainViewController: UICollectionViewController {
@@ -115,6 +118,13 @@ class MainViewController: UICollectionViewController {
             dataProvider.startDownload()
         case .ourCoursesAlamofir:
             performSegue(withIdentifier: "OurCoursesWithAlamofire", sender: self)
+        case .responseData:
+            performSegue(withIdentifier: "ResponseData", sender: self)
+            AlamofireNetworkRequest.responseData(url: swiftbookApi)
+        case .responseString:
+            AlamofireNetworkRequest.responseString(url: swiftbookApi)
+        case .response:
+            AlamofireNetworkRequest.response(url: swiftbookApi)
         }
         
     }
@@ -122,13 +132,17 @@ class MainViewController: UICollectionViewController {
     //MARK:- Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let coursesVC = segue.destination as? CoursesViewController else { return }
-        
+        let coursesVC = segue.destination as? CoursesViewController
+        let imageVC = segue.destination as? ImageViewController
         switch segue.identifier {
         case "OurCourses":
-            coursesVC.fetchData()
+            coursesVC?.fetchData()
         case "OurCoursesWithAlamofire":
-            coursesVC.fetchDataWithAlamofire()
+            coursesVC?.fetchDataWithAlamofire()
+        case "ShowImage":
+            imageVC?.fetchImage()
+        case "ResponseData":
+            imageVC?.fetchDataWithAlamofire()
         default:
             break
         }
@@ -138,9 +152,7 @@ class MainViewController: UICollectionViewController {
 
 extension MainViewController {
     private func registerForNotifications() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in
-            
-        }
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
     }
     
     private func postNotification() {
