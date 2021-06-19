@@ -29,7 +29,10 @@ class CoursesViewController: UIViewController {
     }
     
     func fetchDataWithAlamofire() {
-        AlamofireNetworkRequest.sendRequest(url: url)
+        AlamofireNetworkRequest.sendRequest(url: url){ [weak self](courses) in
+            self?.courses = courses
+            self?.tableView.reloadData()
+        }
     }
     private func configureCell(cell: TableViewCell, for indexPath: IndexPath) {
         let course = courses[indexPath.row]
