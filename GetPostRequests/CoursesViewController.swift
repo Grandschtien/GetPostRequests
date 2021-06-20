@@ -15,6 +15,8 @@ class CoursesViewController: UIViewController {
     private var courseName: String?
     private var courseURL: String?
     private let url = "https://swiftbook.ru//wp-content/uploads/api/api_courses"
+    private let postRequestUrl = "https://jsonplaceholder.typicode.com/posts"
+    private let putRequestUrl = "https://jsonplaceholder.typicode.com/posts/1"
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -56,7 +58,22 @@ class CoursesViewController: UIViewController {
         }
        
     }
-   
+    func postRequest(){
+        AlamofireNetworkRequest.postRequest(url: postRequestUrl) {[weak self] courses in
+            self?.courses = courses
+            DispatchQueue.main.async{
+                self?.tableView.reloadData()
+            }
+        }
+    }
+    func putRequest() {
+        AlamofireNetworkRequest.putRequest(url: putRequestUrl) {[weak self] courses in
+            self?.courses = courses
+            DispatchQueue.main.async{
+                self?.tableView.reloadData()
+            }
+        }
+    }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "Description", let vc = segue.destination as? WebViewController else { return }

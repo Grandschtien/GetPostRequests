@@ -10,13 +10,19 @@ import Alamofire
 class ImageViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var completeLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
+    
+    
     private let url = "https://applelives.com/wp-content/uploads/2016/03/iPhone-SE-11.jpeg"
+    private let largeImageUrl = "https://i.imgur.com/3416rvI.jpg"
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
     }
+    
     // Пример загрузки картинки
     func fetchImage() {
         NetworkManager.dowloadImage(url: url) {[weak self] image in
@@ -25,16 +31,32 @@ class ImageViewController: UIViewController {
                 self?.imageView.contentMode = .scaleAspectFill
         }
     }
+    
     func fetchDataWithAlamofire() {
-        AF.request(url).responseData { [weak self] (responseData) in
-            switch responseData.result {
-            case .success(let data):
-                guard let image = UIImage(data: data) else { return }
+        AlamofireNetworkRequest.downloadImage(url: url) { [weak self] image in
+            DispatchQueue.main.async {
                 self?.activityIndicator.stopAnimating()
                 self?.imageView.image = image
-            case .failure(let error):
-                print(error)
             }
+        }
+        
+    }
+    
+    func dowloadImageWithProgress() {
+        AlamofireNetworkRequest.onProgress = { [weak self] progress in
+            self?.progressView.isHidden = false
+            self?.progressView.progress = Float(progress)
+            
+        }
+        AlamofireNetworkRequest.completed = { [weak self] completed in
+            self?.completeLabel.isHidden = false
+            self?.completeLabel.text = completed
+        }
+        AlamofireNetworkRequest.downloadLargeImage(url: largeImageUrl) {[weak self] image in
+            self?.activityIndicator.stopAnimating()
+            self?.imageView.image = image
+            self?.activityIndicator.isHidden = true
+            self?.progressView.isHidden = true
         }
     }
 }
