@@ -22,6 +22,7 @@ enum Actions: String, CaseIterable {
     case downloadLargeImage = "Dowload large image"
     case postAlamofire = "Post with ALamofire"
     case putRequest = "Put request with alamofire"
+    case uploadImageAlamofire = "Upload image with alamofire"
 }
 
 private let reuseIdentifier = "Cell"
@@ -134,6 +135,9 @@ class MainViewController: UICollectionViewController {
             performSegue(withIdentifier: "ShowRequest", sender: self)
         case .putRequest:
             performSegue(withIdentifier: "PutRequest", sender: self)
+        case .uploadImageAlamofire:
+            break
+            //AlamofireNetworkRequest.uploadImage(url: uploadImage)
         }
         
     }

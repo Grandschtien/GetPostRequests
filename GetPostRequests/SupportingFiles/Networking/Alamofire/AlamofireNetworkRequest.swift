@@ -133,11 +133,12 @@ class AlamofireNetworkRequest {
         guard let url = URL(string: url) else {
             return
         }
+        
         let userData: [String: Any] = ["name":"Our second iOS apps",
                                          "link":"https://swiftbook.ru/contents/our-first-applications/",
                                          "imageUrl":"https://swiftbook.ru/wp-content/uploads/2018/03/2-courselogo.jpg",
-                                         "number_of_lessons":20,
-                                         "number_of_tests":10 ]
+                                         "number_of_lessons": "20",
+                                         "number_of_tests": "10"]
         AF.request(url, method: .put, parameters: userData).responseJSON { responseJSON in
             guard let statusCode = responseJSON.response?.statusCode else { return }
             print(statusCode)
@@ -156,5 +157,26 @@ class AlamofireNetworkRequest {
                 print(error)
             }
         }
+    }
+    
+    static func uploadImage(url: String){
+//        guard let url = URL(string: url) else {
+//            return
+//        }
+//
+//        let imageData = (UIImage(named: "No")?.pngData()!)!
+//
+//        let httpHeaders = HTTPHeaders(["Authorization": "Client-ID"])
+//
+//        AF.upload(multipartFormData: { multipartFromData in
+//            multipartFromData.append(imageData, withName: "image")
+//        }, to: url, method: .post, headers: httpHeaders) { encodingCompletion in
+//            switch encodingCompletion {
+//            case .success(request: let uploadRequest, streamFromDisk: let streamFromDisk, streamingFile: let streamingFile)
+//            default:
+//                break
+//            }
+//        }
+
     }
 }

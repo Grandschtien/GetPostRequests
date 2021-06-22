@@ -25,7 +25,10 @@ class ImageViewController: UIViewController {
     
     // Пример загрузки картинки
     func fetchImage() {
+    
         NetworkManager.dowloadImage(url: url) {[weak self] image in
+                self?.completeLabel.isHidden = true
+                self?.progressView.isHidden = true
                 self?.activityIndicator.stopAnimating()
                 self?.imageView.image = image
                 self?.imageView.contentMode = .scaleAspectFill
@@ -55,6 +58,8 @@ class ImageViewController: UIViewController {
         AlamofireNetworkRequest.downloadLargeImage(url: largeImageUrl) {[weak self] image in
             self?.activityIndicator.stopAnimating()
             self?.imageView.image = image
+            self?.imageView.contentMode = .scaleAspectFill
+            self?.completeLabel.isHidden = true
             self?.activityIndicator.isHidden = true
             self?.progressView.isHidden = true
         }

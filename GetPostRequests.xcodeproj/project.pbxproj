@@ -83,25 +83,225 @@
 		60287CC5267A4F3F003C345C /* GetPostRequests */ = {
 			isa = PBXGroup;
 			children = (
-				60287CC6267A4F3F003C345C /* AppDelegate.swift */,
-				60287CC8267A4F3F003C345C /* SceneDelegate.swift */,
-				60BE4FF9267C00B400AE6524 /* NetworkManager.swift */,
-				60BE4FFD267E56E900AE6524 /* AlamofireNetworkRequest.swift */,
-				60287CCC267A4F3F003C345C /* Main.storyboard */,
-				60287CCF267A4F44003C345C /* Assets.xcassets */,
-				60287CD1267A4F44003C345C /* LaunchScreen.storyboard */,
-				60287CD4267A4F44003C345C /* Info.plist */,
-				60287CDA267A52B8003C345C /* ImageViewController.swift */,
-				60BE4FEB267B8F5B00AE6524 /* CoursesViewController.swift */,
-				60BE4FED267B911900AE6524 /* WebViewController.swift */,
-				60BE4FEF267B913800AE6524 /* TableViewCell.swift */,
-				60BE4FF1267B95D200AE6524 /* Course.swift */,
-				60BE4FF3267B988F00AE6524 /* WebsiteDescription.swift */,
-				60BE4FF5267BB30A00AE6524 /* MainViewController.swift */,
-				60BE4FF7267BB32700AE6524 /* CollectionViewCell.swift */,
-				60BE4FFB267C0EEF00AE6524 /* DataProvider.swift */,
+				60BE50162680AC7300AE6524 /* SupportingFiles */,
+				60BE50132680AC3900AE6524 /* Application */,
+				60BE50012680AB0600AE6524 /* Main */,
+				60BE50042680AB2300AE6524 /* WebSite */,
+				60BE50032680AB1800AE6524 /* Courses */,
+				60BE50022680AB0C00AE6524 /* Image */,
 			);
 			path = GetPostRequests;
+			sourceTree = "<group>";
+		};
+		60BE50012680AB0600AE6524 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				60BE50062680AB3B00AE6524 /* Model */,
+				60BE50072680AB5F00AE6524 /* View */,
+				60BE50052680AB2E00AE6524 /* Controller */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		60BE50022680AB0C00AE6524 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				60BE50102680ABBF00AE6524 /* Model */,
+				60BE500F2680ABBD00AE6524 /* View */,
+				60BE500E2680ABBB00AE6524 /* Controller */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		60BE50032680AB1800AE6524 /* Courses */ = {
+			isa = PBXGroup;
+			children = (
+				60BE500D2680AB9100AE6524 /* Model */,
+				60BE500C2680AB8F00AE6524 /* View */,
+				60BE500B2680AB8C00AE6524 /* Controller */,
+			);
+			path = Courses;
+			sourceTree = "<group>";
+		};
+		60BE50042680AB2300AE6524 /* WebSite */ = {
+			isa = PBXGroup;
+			children = (
+				60BE500A2680AB8700AE6524 /* Model */,
+				60BE50092680AB8500AE6524 /* View */,
+				60BE50082680AB8200AE6524 /* Controller */,
+			);
+			path = WebSite;
+			sourceTree = "<group>";
+		};
+		60BE50052680AB2E00AE6524 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				60BE4FF5267BB30A00AE6524 /* MainViewController.swift */,
+				60BE50122680AC2800AE6524 /* Cell */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		60BE50062680AB3B00AE6524 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		60BE50072680AB5F00AE6524 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		60BE50082680AB8200AE6524 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				60BE4FED267B911900AE6524 /* WebViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		60BE50092680AB8500AE6524 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		60BE500A2680AB8700AE6524 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				60BE4FF3267B988F00AE6524 /* WebsiteDescription.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		60BE500B2680AB8C00AE6524 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				60BE4FEB267B8F5B00AE6524 /* CoursesViewController.swift */,
+				60BE50112680ABEA00AE6524 /* Cell */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		60BE500C2680AB8F00AE6524 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		60BE500D2680AB9100AE6524 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				60BE4FF1267B95D200AE6524 /* Course.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		60BE500E2680ABBB00AE6524 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				60287CDA267A52B8003C345C /* ImageViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		60BE500F2680ABBD00AE6524 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		60BE50102680ABBF00AE6524 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		60BE50112680ABEA00AE6524 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				60BE4FEF267B913800AE6524 /* TableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		60BE50122680AC2800AE6524 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				60BE4FF7267BB32700AE6524 /* CollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		60BE50132680AC3900AE6524 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				60BE50152680AC5900AE6524 /* View */,
+				60BE50142680AC4200AE6524 /* Controller */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		60BE50142680AC4200AE6524 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				60287CC6267A4F3F003C345C /* AppDelegate.swift */,
+				60287CC8267A4F3F003C345C /* SceneDelegate.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		60BE50152680AC5900AE6524 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				60287CCC267A4F3F003C345C /* Main.storyboard */,
+				60287CD1267A4F44003C345C /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		60BE50162680AC7300AE6524 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				60BE50172680AC9600AE6524 /* Networking */,
+				60287CCF267A4F44003C345C /* Assets.xcassets */,
+				60287CD4267A4F44003C345C /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		60BE50172680AC9600AE6524 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				60BE50192680ACA500AE6524 /* URLSession */,
+				60BE50182680AC9D00AE6524 /* Alamofire */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		60BE50182680AC9D00AE6524 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				60BE4FFD267E56E900AE6524 /* AlamofireNetworkRequest.swift */,
+			);
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		60BE50192680ACA500AE6524 /* URLSession */ = {
+			isa = PBXGroup;
+			children = (
+				60BE4FF9267C00B400AE6524 /* NetworkManager.swift */,
+				60BE4FFB267C0EEF00AE6524 /* DataProvider.swift */,
+			);
+			path = URLSession;
 			sourceTree = "<group>";
 		};
 		C3B47A14EDAEC3300B82538A /* Pods */ = {
@@ -396,7 +596,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = GetPostRequests/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GetPostRequests/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -416,7 +616,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = GetPostRequests/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GetPostRequests/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
